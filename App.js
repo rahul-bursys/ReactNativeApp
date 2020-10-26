@@ -12,6 +12,7 @@ import {
   StyleSheet,
   ScrollView,
   View,
+  Image,
   FlatList,
   Text,
   StatusBar,
@@ -24,34 +25,38 @@ import {
   DebugInstructions,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+import { Card, ListItem, Button, Icon } from 'react-native-elements'
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
-
-const Item = ({ title }) => (
-  <View style={styles.item}>
-    <Text style={styles.title}>{title}</Text>
-  </View>
+const Item = ({ i }) => (
+  <Card>
+    <View key={i.id}>
+      <View style={{ flexDirection: "row", flex: 1, height: wp("20%"), alignItems: "center" }}>
+        <Image
+          style={{ flex: 2 }}
+          resizeMode="center"
+          source={i.img}
+        />
+        <View style={{ flex: 5, }}>
+          <Text>{i.title}</Text>
+        </View>
+      </View>
+    </View>
+  </Card>
 );
-
-
 
 const App: () => React$Node = () => {
   const DATA = [
     {
-      id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-      title: 'First Item',
+      id: '1',
+      title: 'Farmhouse Pizza',
+      img: require('./assets/Farmhouse.jpg'),
     },
-    {
-      id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-      title: 'Second Item',
-    },
-    {
-      id: '58694a0f-3da1-471f-bd96-145571e29d72',
-      title: 'Third Item',
-    },
+
   ];
-  
+
   const renderItem = ({ item }) => (
-    <Item title={item.title} />
+    <Item i={item} />
   );
 
   return (
@@ -61,8 +66,11 @@ const App: () => React$Node = () => {
         <ScrollView
           contentInsetAdjustmentBehavior="automatic"
           style={styles.scrollView}>
-          <Header />
-
+          <Image
+            style={{ alignSelf: "center" }}
+            resizeMode="contain"
+            source={require('./assets/pizza1.png')}
+          />
           <View style={styles.body}>
             <FlatList
               data={DATA}
