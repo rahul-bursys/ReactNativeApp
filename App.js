@@ -28,22 +28,7 @@ import {
 import { Card, ListItem, Button, Icon } from 'react-native-elements'
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
-const Item = ({ i }) => (
-  <Card>
-    <View key={i.id}>
-      <View style={{ flexDirection: "row", flex: 1, height: wp("20%"), alignItems: "center" }}>
-        <Image
-          style={{ flex: 2 }}
-          resizeMode="center"
-          source={i.img}
-        />
-        <View style={{ flex: 5, }}>
-          <Text>{i.title}</Text>
-        </View>
-      </View>
-    </View>
-  </Card>
-);
+ 
 
 const App: () => React$Node = () => {
   const DATA = [
@@ -52,35 +37,65 @@ const App: () => React$Node = () => {
       title: 'Farmhouse Pizza',
       img: require('./assets/Farmhouse.jpg'),
     },
-
+    {
+      id: '2',
+      title: 'Classic Veg',
+      img: require('./assets/Classic_veg.jpg'),
+    },
+    {
+      id: '3',
+      title: 'Fresh Veggie Pizza',
+      img: require('./assets/Fresh_Veggie.jpg'),
+    },
+    {
+      id: '4',
+      title: 'Farmhouse Heavy Pizza',
+      img: require('./assets/Heavy.png'),
+    },
+    {
+      id: '5',
+      title: 'Paneer Makhni Pizza',
+      img: require('./assets/Paneer_Makhni.jpg'),
+    },
+    {
+      id: '6',
+      title: 'Veggie Paradise Pizza',
+      img: require('./assets/veggie_paradise.jpg'),
+    },
   ];
 
-  const renderItem = ({ item }) => (
-    <Item i={item} />
-  );
+  let renderItems = (i)=>{
+    console.log("iiiiiiiiiiiiiiiiiiiiiiiiiiiii", i)
+  return  <Card>
+     <View key={i.item.id}>
+       <View style={{ flexDirection: "row", flex: 1, height: wp("20%"), alignItems: "center" }}>
+         <Image
+           style={{ flex: 2 }}
+           resizeMode="center"
+           source={i.item.img}
+         />
+         <View style={{ flex: 5, }}>
+           <Text>{i.item.title}</Text>
+         </View>
+       </View>
+     </View>
+   </Card>
+  }
 
   return (
-    <>
+    <View>
       <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          <Image
-            style={{ alignSelf: "center" }}
-            resizeMode="contain"
-            source={require('./assets/pizza1.png')}
-          />
-          <View style={styles.body}>
-            <FlatList
-              data={DATA}
-              renderItem={renderItem}
-              keyExtractor={item => item.id}
-            />
-          </View>
-        </ScrollView>
-      </SafeAreaView>
-    </>
+      <Image
+        style={{ alignSelf: "center" }}
+        resizeMode="contain"
+        source={require('./assets/pizza1.png')}
+      />
+      <FlatList
+        data={DATA}
+        renderItem={(item,i)=> renderItems(item)}
+        keyExtractor={(item,index) => index}
+      />
+    </View>
   );
 };
 
