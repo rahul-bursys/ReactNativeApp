@@ -62,6 +62,11 @@ const App: () => React$Node = () => {
       title: 'Veggie Paradise Pizza',
       img: require('./assets/veggie_paradise.jpg'),
     },
+    {
+      id: '7',
+      title: 'Mexican wave Pizza',
+      img: require('./assets/veggie_paradise.jpg'),
+    },
   ];
 
   let renderItems = (i)=>{
