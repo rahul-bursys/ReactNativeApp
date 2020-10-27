@@ -44,22 +44,22 @@ const App: () => React$Node = () => {
     },
     {
       id: '3',
-      title: 'Fresh Veggie Pizza',
+      title: 'Farm Fresh Veggie Pizza',
       img: require('./assets/Fresh_Veggie.jpg'),
     },
     {
       id: '4',
-      title: 'Farmhouse Heavy Pizza',
+      title: 'Farmhouse Pizza - Cheese Overloaded',
       img: require('./assets/Heavy.png'),
     },
     {
       id: '5',
-      title: 'Paneer Makhni Pizza',
+      title: 'Indian Paneer Makhni Pizza',
       img: require('./assets/Paneer_Makhni.jpg'),
     },
     {
       id: '6',
-      title: 'Veggie Paradise Pizza',
+      title: 'Veggie Paradise Pizza - Cheese Overloaded',
       img: require('./assets/veggie_paradise.jpg'),
     },
     {
